@@ -10,12 +10,6 @@ const requireLogin = require('../middleware/requireLogin')
 const nodemailer = require('nodemailer')
 const sendgridTransport = require('nodemailer-sendgrid-transport')
 
-const transporter = nodemailer.createTransport(sendgridTransport({
-    auth:{
-        api_key:"SG.wx2NY_MRRL2zqNlyglxGhA.4gOoZhRm1YSpzkRludO_coLrVxmluqilgXdmBUURuxw"
-    }
-}))
-
 router.post('/reset-password',(req,res)=>{
     crypto.randomBytes(32),(err,buffer)=>{
         if(err){
@@ -32,7 +26,7 @@ router.post('/reset-password',(req,res)=>{
             user.save().then((result)=>{
                 transporter.sendMail({
                     to:user.email,
-                    from:"pulkitjainjk@gmail.com",
+                    from:"abc@gmail.com",
                     subject:"Password Reset",
                     html:`
                     <p>You have requested for password reset.</p>
